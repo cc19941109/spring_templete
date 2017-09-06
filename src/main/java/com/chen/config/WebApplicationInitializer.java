@@ -21,4 +21,7 @@ public class WebApplicationInitializer extends AbstractAnnotationConfigDispatche
 		// TODO Auto-generated method stub
 		return new String[]{"/"};
 	}
+	
+	
+	
 }

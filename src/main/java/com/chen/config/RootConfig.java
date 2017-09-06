@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages = { "com.chen" }, excludeFilters = {
 		@Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class) })
 // @ComponentScan(basePackages = {"com.chen"})
-@ImportResource("classpath:spring.xml")
+//@ImportResource("classpath:spring.xml")
 public class RootConfig {
 
 }

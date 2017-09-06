@@ -20,7 +20,7 @@ public class UserServiceTest extends BasicTest {
 	@Test
 	public void testUserService() {
 		System.out.println("test begin....");
-		Page<UserEntity> uList = userServiceImpl.getUsers(1, 10);
+		List<UserEntity> uList = userServiceImpl.getUsers(1, 10);
 
 		Iterator<UserEntity> iterator = uList.iterator();
 		while (iterator.hasNext()) {

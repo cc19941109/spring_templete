@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,18 +21,19 @@ public class UserController {
 	@Autowired
 	UserServiceImpl userServiceImpl;
 
-	@ResponseBody
-	@RequestMapping(value = "/user/{page}", method = RequestMethod.GET)
-	public List<UserEntity> getPageUsers(@PathVariable("page") int page) {
+	@RequestMapping(value = "/user/{page}", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody List<UserEntity> getPageUsers(@PathVariable("page") int page) {
 
 		List<UserEntity> list = new ArrayList<>();
-		Page<UserEntity> pages = userServiceImpl.getUsers(page, 10);
-		list = pages.getContent();
+		list= userServiceImpl.getUsers(page, 10);
 
 		return list;
 	}
-	
-	
-	
+
+	@RequestMapping(value = "/user/save", method = RequestMethod.POST, consumes = "application/json")
+	public @ResponseBody UserEntity saveOneUser(@RequestBody UserEntity user) {
+
+		return userServiceImpl.saveOne(user);
+	}
 
 }
