@@ -26,7 +26,6 @@ public class UserServiceTest extends BasicTest {
 		while (iterator.hasNext()) {
 			System.err.println(iterator.next());
 		}
-
 	}
 
 	@Test
