@@ -28,7 +28,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		 resolver.setExposeContextBeansAsAttributes(true);
 
 	/*	List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
-
 		InternalResourceViewResolver r1 = new InternalResourceViewResolver();
 		r1.setPrefix("/WEB-INF/pages/");
 		r1.setSuffix(".jsp");
@@ -42,7 +41,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		resolver.setViewResolvers(resolvers);
 		resolver.setContentNegotiationManager(manager);
 		resolver.setOrder(1);*/
-
 		return resolver;
 	}
 

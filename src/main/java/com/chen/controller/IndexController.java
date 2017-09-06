@@ -20,23 +20,21 @@ public class IndexController {
 
 	@Autowired
 	UserServiceImpl userServiceImpl;
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
-	@RequestMapping(value="/t",method = RequestMethod.GET)
+
+	@RequestMapping(value = "/t", method = RequestMethod.GET)
 	public String index() {
 		return "test";
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value = "/user1",method = RequestMethod.GET)
-	public UserEntity getUsers(HttpServletRequest request ,HttpServletResponse response) {
-		UserEntity user1  = userRepository.findOne(1l);
-		
-		
-		return user1 ;
+	@RequestMapping(value = "/user1", method = RequestMethod.GET)
+	public UserEntity getUsers(HttpServletRequest request, HttpServletResponse response) {
+		UserEntity user1 = userRepository.findOne(1l);
+
+		return user1;
 	}
-	
-	
+
 }

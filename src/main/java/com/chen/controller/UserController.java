@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.chen.entity.UserEntity;
 import com.chen.service.impl.UserServiceImpl;
 
-@Controller(value = "/user")
+@Controller
 public class UserController {
 
 	@Autowired
 	UserServiceImpl userServiceImpl;
 
 	@ResponseBody
-	@RequestMapping(value = "/{page}", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/{page}", method = RequestMethod.GET)
 	public List<UserEntity> getPageUsers(@PathVariable("page") int page) {
 
 		List<UserEntity> list = new ArrayList<>();
@@ -30,6 +30,7 @@ public class UserController {
 
 		return list;
 	}
+	
 	
 	
 
