@@ -7,9 +7,9 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@ComponentScan(basePackages = { "com.chen" }, excludeFilters = {
-		@Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class) })
-// @ComponentScan(basePackages = {"com.chen"})
+// @ComponentScan(basePackages = { "com.chen" }, excludeFilters = {
+// @Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class) })
+@ComponentScan(basePackages = {"com.chen"})
 public class RootConfig {
 
 }

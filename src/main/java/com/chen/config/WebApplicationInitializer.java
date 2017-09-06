@@ -2,7 +2,7 @@ package com.chen.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class DispacherConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {

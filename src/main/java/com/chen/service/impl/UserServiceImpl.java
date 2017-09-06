@@ -16,6 +16,11 @@ public class UserServiceImpl implements UserService{
 	private UserRepository userRepository;
 	
 	
+	public UserEntity getOne(){
+	
+		 return userRepository.findOne(1l) ;
+	}
+	
 	public Page<UserEntity> getUsers(int pageNumber,int pageSize){
 		 PageRequest request = this.buildPageRequest(pageNumber,pageSize);
 		 Page<UserEntity> users = userRepository.findAll(request);
