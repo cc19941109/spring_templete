@@ -30,7 +30,5 @@ public class UserRestController {
 
 		return userServiceImpl.saveOne(user);
 	}
-	
-	
-	
+
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.chen.entity.UserEntity;
+import com.chen.exception.UserNotFoundException;
 import com.chen.service.impl.UserServiceImpl;
 
 @Controller
@@ -39,9 +39,11 @@ public class UserController {
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody UserEntity getOneUser(@PathVariable("id") Long id) {
-
+		
 		UserEntity  user = userServiceImpl.getOne(id);
-
+		if(user==null){
+			throw new UserNotFoundException(id);
+		}
 		return user;
 	}
 
