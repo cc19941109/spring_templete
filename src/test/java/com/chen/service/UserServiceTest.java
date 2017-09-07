@@ -30,14 +30,14 @@ public class UserServiceTest extends BasicTest {
 
 	@Test
 	public void testGetOne() {
-		UserEntity userEntity = userServiceImpl.getOne();
+		UserEntity userEntity = userServiceImpl.getOne(1l);
 		System.out.println(userEntity);
 
 	}
 
 	@Test
 	public void testUserServiceImpl() {
-		UserEntity userEntity = userServiceImpl.getOne();
+		UserEntity userEntity = userServiceImpl.getOne(1l);
 		System.out.println(userEntity);
 	}
 

@@ -18,9 +18,13 @@ public class UserServiceImpl implements UserService{
 	private UserRepository userRepository;
 	
 	
-	public UserEntity getOne(){
+	public UserEntity getOne(long id){
+		
+		 return userRepository.findOne(id) ;
+	}
 	
-		 return userRepository.findOne(1l) ;
+	public UserEntity findById(Long id) {
+		return userRepository.findOne(id);
 	}
 	
 	public List<UserEntity> getUsers(int pageNumber,int pageSize){

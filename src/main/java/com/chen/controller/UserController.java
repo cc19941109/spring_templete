@@ -21,7 +21,7 @@ public class UserController {
 	@Autowired
 	UserServiceImpl userServiceImpl;
 
-	@RequestMapping(value = "/user/{page}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/user/page/{page}", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody List<UserEntity> getPageUsers(@PathVariable("page") int page) {
 
 		List<UserEntity> list = new ArrayList<>();
@@ -34,6 +34,15 @@ public class UserController {
 	public @ResponseBody UserEntity saveOneUser(@RequestBody UserEntity user) {
 
 		return userServiceImpl.saveOne(user);
+	}
+	
+
+	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody UserEntity getOneUser(@PathVariable("id") Long id) {
+
+		UserEntity  user = userServiceImpl.getOne(id);
+
+		return user;
 	}
 
 }
