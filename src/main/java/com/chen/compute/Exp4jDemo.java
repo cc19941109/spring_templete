@@ -26,6 +26,7 @@ public class Exp4jDemo {
 		ValidationResult res = e.validate();
 		System.out.println(res.isValid());
 	}
+	
 	public void test7() {
 		String exp = "2^0.5";
 		double result = new ExpressionBuilder(exp)
