@@ -16,6 +16,11 @@ public class Car {
 
 	private UserEntity userEntity;
 
+	
+	public boolean getFalse(int num){
+		return false;
+	}
+	
 	public UserEntity getUserEntity() {
 		return userEntity;
 	}

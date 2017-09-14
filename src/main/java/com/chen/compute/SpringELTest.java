@@ -16,9 +16,57 @@ public class SpringELTest {
 	public static void main(String[] args) {
 		SpringELTest springELTest = new SpringELTest();
 
-		springELTest.testObJ2();
+		springELTest.testObj();
 	}
 
+	public void testElvis(){
+
+		ExpressionParser parser = new SpelExpressionParser();
+	}
+	
+	
+	
+	public void testOperator(){
+		
+		ExpressionParser parser = new SpelExpressionParser();
+		EvaluationContext context = new StandardEvaluationContext();
+		
+		boolean testTrue = parser.parseExpression("2==2").getValue(Boolean.class);
+		System.out.println(testTrue);
+		boolean test1 = parser.parseExpression(" 1 instanceof T(Integer)").getValue(Boolean.class);
+		System.out.println(test1);
+		Integer pi = parser.parseExpression(" 2^ 4*2").getValue(Integer.class);
+		System.out.println(pi);
+	}
+	
+	
+	public void testMethod(){
+		Car car = new Car();
+		car.setName("bmw");
+		List<String> names = new ArrayList<>();
+		names.add("cc");
+		names.add("xw");
+		names.add("zf");
+		car.setNames(names);
+		car.setSize(120);
+		Map<String, Integer> owners = new HashMap<>();
+		owners.put("cc1", 1);
+		owners.put("xw1", 1);
+		owners.put("zf1", 1);
+		car.setOwners(owners);
+
+		UserEntity user = new UserEntity();
+		user.setId(1l);
+		user.setInfo("你好");
+		user.setName("cc");
+		car.setUserEntity(user);
+
+		ExpressionParser parser = new SpelExpressionParser();
+		EvaluationContext context = new StandardEvaluationContext(car);		
+		boolean isOK = parser.parseExpression("getFalse(1)").getValue(context,Boolean.class);
+		System.out.println(isOK);
+	}
+	
 	public void testList() {
 		UserEntity user = new UserEntity();
 		user.setId(1l);
@@ -67,7 +115,7 @@ public class SpringELTest {
 		UserEntity user = new UserEntity();
 		user.setId(1l);
 		user.setInfo("你好");
-		user.setName("cc");
+//		user.setName("cc");
 		car.setUserEntity(user);
 
 		ExpressionParser parser = new SpelExpressionParser();
@@ -88,11 +136,11 @@ public class SpringELTest {
 		UserEntity user = new UserEntity();
 		user.setId(1l);
 		user.setInfo("你好");
-		user.setName("cc");
+//		user.setName("cc");
 		ExpressionParser parser = new SpelExpressionParser();
 		EvaluationContext context = new StandardEvaluationContext(user);
 
-		String username = (String) parser.parseExpression("name").getValue(context);
+		String username = (String) parser.parseExpression("name?:'未知'").getValue(context);
 		System.out.println(username);
 		long id = (long) parser.parseExpression("id").getValue(context);
 		System.out.println(id);
