@@ -15,16 +15,38 @@ public class Exp4jDemo {
 	public static void main(String[] args) throws Exception {
 		Exp4jDemo eDemo = new Exp4jDemo();
 		eDemo.test8();
+		
+	}
+	
+	public void testSan() {
+		Function function = new Function("comp",2) {
+			
+			@Override
+			public double apply(double... args) {
+				if(args[0]>args[1]) {
+					return 1;
+				}
+				return 0;
+			}
+		};
+		Expression expression = new ExpressionBuilder("comp(2,1)").function(function).build();
+		System.out.println(expression.evaluate());
+		
+	}
+	
+	public void test9() {
+		Expression expression = new ExpressionBuilder("(2>1)").build();
+		System.out.println(expression.evaluate());
 	}
 
 	public void test8() {
-		Expression e = new ExpressionBuilder("x")
+		Expression e = new ExpressionBuilder("2x")
 		        .variable("x")
 		        .build()
 		        .setVariable("x", 0.213);
 
 		ValidationResult res = e.validate();
-		System.out.println(res.isValid());
+		System.out.println(res.isValid()+"  "+e.evaluate());
 	}
 	
 	public void test7() {
