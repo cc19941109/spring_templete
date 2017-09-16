@@ -23,7 +23,7 @@ public class JpaHirConfig {
 	private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/jpadb";
 	private static final String DATABASE_USER = "root";
-	private static final String DATABASE_PASSWORD = "admin";
+	private static final String DATABASE_PASSWORD = "123456";
 	// private static final String PACKAGES_TO_SCAN = "com.chen";
 	// private static final String HIBERNATE_DIALECT =
 	// "org.hibernate.dialect.MySQL5Dialect";
