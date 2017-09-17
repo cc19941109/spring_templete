@@ -2,6 +2,7 @@ package com.chen.java8.chapter3;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -32,6 +33,11 @@ public class FinalVar {
 		Function<Integer, Apple> f1 = Apple::new;
 		Apple apple2 = f1.apply(1213);
 		System.out.println(apple2.getWeight());
+		
+		BiFunction<String, Integer, Apple> f = Apple::new;
+		Apple apple3  = f.apply("chen", 120);
+		System.out.println(apple3);
+		
 	}
 
 }

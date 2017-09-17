@@ -2,6 +2,9 @@ package com.chen.java8.chapter1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+
+import com.chen.java8.chapter3.LambdaTest;
 
 public class Apple {
 
@@ -9,12 +12,18 @@ public class Apple {
 	private Integer weight;
 	private String color;
 
-	public Apple(){}
-	
-	public Apple(Integer weight){
+	public Apple() {
+	}
+
+	public Apple(Integer weight) {
 		this.weight = weight;
 	}
-	
+
+	public Apple(String name, Integer weight) {
+		this.name = name;
+		this.weight = weight;
+	}
+
 	public Apple(String name, Integer weight, String color) {
 		super();
 		this.name = name;
@@ -59,7 +68,7 @@ public class Apple {
 		return apple.getWeight() > 150;
 	}
 
-	public List<Apple> getApples(){
+	public List<Apple> getApples() {
 		List<Apple> apples = new ArrayList<>();
 		apples.add(new Apple("apple1", 170, "red"));
 		apples.add(new Apple("apple2", 160, "green"));
@@ -72,4 +81,16 @@ public class Apple {
 		apples.add(new Apple("apple9", 160, "red"));
 		return apples;
 	}
+	
+	public static void ApplesToString(List<Apple> apples){
+		Apple.forEach(apples, (Apple a)->System.out.println(a));
+	}
+	
+	private static <T> void forEach(List<T> list,Consumer<T> c){
+		for (T t : list) {
+			c.accept(t);
+		}
+	}
+	
+	
 }
