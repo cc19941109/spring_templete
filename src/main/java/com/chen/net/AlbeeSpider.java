@@ -3,6 +3,7 @@ package com.chen.net;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 import java.io.*;
@@ -11,6 +12,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.management.JMException;
 
 /**
  * Created by Albee on 2017/5/21.
@@ -25,7 +28,7 @@ public class AlbeeSpider implements PageProcessor {
 			// "MWRiZWUxNmMzOTA5NDdmNTkwNGRmNWQyZWZhNDRmY2U=|1475371295|b9e9c165fc1d3c314afa2b66e3ff27c514bb4946")
 			.addCookie("Domain", "zhihu.com")
 			.addCookie("z_c0",
-					"2|1:0|10:1505630397|4:z_c0|92:Mi4xeEtid0FRQUFBQUFBQUFKRFhQR19DeWNBQUFDRUFsVk52YVhsV1FEOV9lVmIyR3AzV1JNMW9DLW9OZU5SelV3UnlR|27a670aa066773db15adc7908df060893d0c4c873116fc01ed1921d0ac7251bc")
+					"2|1:0|10:1503542388|4:z_c0|92:Mi4xeEtid0FRQUFBQUFBRU1KSWVaSkVEQ2NBQUFDRUFsVk5kTW5GV1FCMXViRmpHUzNrN3ZlVHpIVHFwNTdKbWlqeVZn|8da840969ccf7b764f4b08acb2a7a246b8f86ea0508f3b49fea3932295816b18")
 			.setUserAgent(
 					"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36");
 	// 话题精华页
@@ -52,9 +55,7 @@ public class AlbeeSpider implements PageProcessor {
 
 		if (page.getUrl().regex(URL_answer).match()) {
 			List<String> urlList = page.getHtml().xpath("//div[@class=RichContent-inner]//img/@data-original").all();
-			List<String> urlList1 = page.getHtml()
-					.xpath("//div[@class=RichContent-inner]//img/@data-original").all();
-
+			
 			String questionTitle = page.getHtml().xpath("//h1[@class=QuestionHeader-title]/text()").toString();
 			System.out.println("题目：" + questionTitle);
 			urlList.stream().forEach(System.err::println);
@@ -63,9 +64,11 @@ public class AlbeeSpider implements PageProcessor {
 			for (int i = 0; i < urlList.size(); i = i + 2) {
 				url.add(urlList.get(i));
 			}
-			String filePath = "/Users/common/download/";
+//			String filePath = "/Users/common/download/";
+			String filePath = "D:\\download\\";
 			try {
-				downLoadPics(url, questionTitle, filePath);
+				boolean isSuccess = downLoadPics(url, questionTitle, filePath);
+				System.out.println("isSuccess: "+isSuccess);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -78,12 +81,13 @@ public class AlbeeSpider implements PageProcessor {
 		return site;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JMException {
 		String answerUrl1 = "https://www.zhihu.com/question/27761934/answer/164790050";
 		String answerUrl = "https://www.zhihu.com/question/33907128/answer/232969239";
 		String questionUrl = "https://www.zhihu.com/question/29134042";
-		// System.out.println("有问题加微信 K2Romm ------ 小仙女Albee");
-		Spider.create(new AlbeeSpider()).addUrl(answerUrl1).thread(1).run();
+		Spider spider1 = Spider.create(new AlbeeSpider()).addUrl(answerUrl1).thread(1);
+		SpiderMonitor.instance().register(spider1);
+		spider1.start();
 
 	}
 
