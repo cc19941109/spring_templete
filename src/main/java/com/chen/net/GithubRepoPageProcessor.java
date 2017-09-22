@@ -3,6 +3,7 @@ package com.chen.net;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.pipeline.JsonFilePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 public class GithubRepoPageProcessor implements PageProcessor {
@@ -27,6 +28,14 @@ public class GithubRepoPageProcessor implements PageProcessor {
     }
 
     public static void main(String[] args) {
-        Spider.create(new GithubRepoPageProcessor()).addUrl("https://github.com/code4craft").thread(5).run();
+    	 Spider.create(new GithubRepoPageProcessor())
+         //从"https://github.com/code4craft"开始抓
+         .addUrl("https://github.com/code4craft")
+         .addPipeline(new JsonFilePipeline("/Users/common/download/"))
+         //开启5个线程抓取
+         .thread(5)
+         //启动爬虫
+         .run();
+    
     }
 }
