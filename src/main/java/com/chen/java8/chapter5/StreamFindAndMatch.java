@@ -4,7 +4,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
 import com.chen.java8.chapter4.Dish;
 import com.chen.java8.chapter4.Dish.Type;
@@ -25,13 +28,13 @@ public class StreamFindAndMatch {
 		
 		dishes.stream().sorted(Comparator.comparing(Dish::getCalories)).forEach(System.out::println);
 		System.out.println("--------------------");
-		int sum = dishes.stream().map(Dish::getCalories).reduce(Integer::sum).get();
+		Optional<Integer> sum = dishes.stream().map(Dish::getCalories).reduce(Integer::sum);
 		System.out.println();
 		
 		
-		int s = dishes.stream().mapToInt(Dish::getCalories).sum();
+		OptionalInt s = dishes.stream().mapToInt(Dish::getCalories).max();
 		
-		System.out.println(s);
+		System.out.println(s.orElse(2));
 		
 		
 	}
