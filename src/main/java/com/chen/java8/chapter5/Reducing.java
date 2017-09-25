@@ -1,8 +1,12 @@
 package com.chen.java8.chapter5;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
+
+import org.codehaus.jackson.map.util.Comparators;
 
 public class Reducing {
 	public static void main(String[] args) {
@@ -14,6 +18,18 @@ public class Reducing {
 		System.out.println(mul);
 		Integer x=  list1.stream().reduce((a,b)->a*b).get();
 		System.out.println("x = "+x);
+		Integer max = list1.stream().reduce(Integer::max).get();
+		System.out.println("max: "+max);
+		
+		
+		
+		
+	}
+	
+	
+	
+	public static void print(Stream stream){
+		stream.forEach(System.out::println);
 		
 	}
 }
