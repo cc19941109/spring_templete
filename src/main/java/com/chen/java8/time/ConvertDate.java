@@ -15,6 +15,7 @@ public class ConvertDate {
 		
 	    LocalDateTime localDateTime =day.atStartOfDay();
 		Instant instant = localDateTime .atZone(ZoneId.systemDefault()).toInstant();
+		
 		Date date = Date.from(instant);
 		System.out.println(date);
 	}

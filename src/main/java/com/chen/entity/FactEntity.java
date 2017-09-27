@@ -15,9 +15,13 @@ public class FactEntity {
 	@Id
 	@GeneratedValue
 	private long id;
+	
 	private long pid;
+	
 	private long cid;
+	
 	private Date date;
+	
 	private double score;
 
 	public long getId() {
