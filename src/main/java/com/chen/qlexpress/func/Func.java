@@ -17,7 +17,8 @@ import com.chen.utils.TimeUtil;
 
 public class Func {
 
-	public Predicate during(String date1, String date2) {
+	//这里的 FactEntity,可以尝试下改成泛型
+	public Specification<FactEntity> during(String date1, String date2) {
 
 		LocalDate localDate1 = LocalDate.parse(date1);
 		LocalDate localDate2 = LocalDate.parse(date2);

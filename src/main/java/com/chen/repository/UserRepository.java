@@ -7,4 +7,5 @@ import com.chen.entity.UserEntity;
 
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
+
 }
