@@ -32,7 +32,7 @@ public class UserServiceTest extends BasicTest {
 	public void testGetOne() {
 		UserEntity userEntity = userServiceImpl.getOne(1l);
 		System.out.println(userEntity);
-
+		
 	}
 
 	@Test

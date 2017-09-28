@@ -1,19 +1,13 @@
 package com.chen.qlexpress;
 
-import com.ql.util.express.ExpressRunner;
+import java.time.LocalDate;
 
 public class Test {
 
-	private static ExpressRunner runner = new ExpressRunner();
-
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		
-		
-	}
-
-	public static void test1() {
-		
-		
+		LocalDate localDate = LocalDate.parse("09-27");
+		System.out.println(localDate);
 		
 		
 	}

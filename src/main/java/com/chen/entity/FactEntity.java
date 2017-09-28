@@ -15,13 +15,13 @@ public class FactEntity {
 	@Id
 	@GeneratedValue
 	private long id;
-	
-	private long pid;
-	
-	private long cid;
-	
+
+	private Integer pid;
+
+	private Integer cid;
+
 	private Date date;
-	
+
 	private double score;
 
 	public long getId() {
@@ -32,19 +32,19 @@ public class FactEntity {
 		this.id = id;
 	}
 
-	public long getPid() {
+	public Integer getPid() {
 		return pid;
 	}
 
-	public void setPid(long pid) {
+	public void setPid(Integer pid) {
 		this.pid = pid;
 	}
 
-	public long getCid() {
+	public Integer getCid() {
 		return cid;
 	}
 
-	public void setCid(long cid) {
+	public void setCid(Integer cid) {
 		this.cid = cid;
 	}
 
@@ -69,6 +69,4 @@ public class FactEntity {
 		return "FactEntity [id=" + id + ", pid=" + pid + ", cid=" + cid + ", date=" + date + ", score=" + score + "]";
 	}
 
-	
-	
 }

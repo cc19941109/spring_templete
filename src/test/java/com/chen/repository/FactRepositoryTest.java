@@ -8,6 +8,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,14 @@ public class FactRepositoryTest extends BasicTest {
 	@Autowired
 	private FactServiceImpl factServiceImpl;
 
+	
+	@Test
+	public void Test() {
+		
+		FactEntity entity = factRepository.findOne(1l);
+		System.out.println(entity);
+	}
+	
 	@Test
 	public void testFactPredicateSearch() {
 
@@ -50,11 +59,16 @@ public class FactRepositoryTest extends BasicTest {
 		FactEntity entity1 = new FactEntity();
 
 		for (long i = 0; i < 100; i++) {
-			entity1.setId(i + 10);
-			entity1.setPid(getRan());
-			entity1.setCid(getRan());
-			entity1.setDate(new Date());
-			entity1.setScore(10 * getRan().doubleValue());
+			entity1.setId(i + 108);
+			entity1.setPid(getRan(10));
+			entity1.setCid(getRan(10));
+			
+			Date date = new Date();
+			date.setYear(116);
+			date.setMonth(8);
+			date.setDate(getRan(30));
+			entity1.setDate(date);
+			entity1.setScore(10 * getRan(10).doubleValue());
 
 			factRepository.save(entity1);
 			System.err.println(entity1);
@@ -62,9 +76,9 @@ public class FactRepositoryTest extends BasicTest {
 
 	}
 
-	public static Long getRan() {
+	public static Integer getRan(int x) {
 
-		return new Double(Math.random() * 10).longValue();
+		return new Double(Math.random() * x).intValue();
 	}
 
 }

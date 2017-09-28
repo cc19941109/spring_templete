@@ -2,6 +2,8 @@ package com.chen.repository;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.domain.Specifications;
 
 import com.chen.entity.UserEntity;
 import com.chen.test.BasicTest;

@@ -24,45 +24,44 @@ public class FactServiceImpl implements FactService {
 	FactRepository factRepository;
 
 	public List<FactEntity> findSearch(Predicate predicate) {
-		
+
 		List<FactEntity> factEntities = factRepository.findAll(new Specification<FactEntity>() {
 
 			@Override
 			public Predicate toPredicate(Root<FactEntity> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				  List<Predicate> predicates = new ArrayList<>();
-	             
+//				List<Predicate> predicates = new ArrayList<>();
+
 				return predicate;
 			}
 		});
-		
-		
+
 		return factEntities;
-		
+
 	}
-	
-	
+
 	public List<FactEntity> findSearch(Date minDate, Date maxDate) {
 
 		List<FactEntity> factEntities = factRepository.findAll(new Specification<FactEntity>() {
 
 			@Override
 			public Predicate toPredicate(Root<FactEntity> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				  List<Predicate> predicates = new ArrayList<>();
-	                if(null != minDate){
-	                    predicates.add(cb.greaterThanOrEqualTo(root.get("date"), minDate));
-	                }
-	                if(null != maxDate){
-	                    predicates.add(cb.lessThanOrEqualTo(root.get("date"), maxDate));
-	                }
-	                
-	                
-	                
+				List<Predicate> predicates = new ArrayList<>();
+				if (null != minDate) {
+					predicates.add(cb.greaterThanOrEqualTo(root.get("date"), minDate));
+				}
+				if (null != maxDate) {
+					predicates.add(cb.lessThanOrEqualTo(root.get("date"), maxDate));
+				}
+
 				return cb.and(predicates.toArray(new Predicate[predicates.size()]));
 			}
 		});
 
 		return factEntities;
 	}
+
+	public List<FactEntity> findBySpecification(Specification<FactEntity> specification) {
+		return factRepository.findAll(specification);
+	}
+
 }
-
-
