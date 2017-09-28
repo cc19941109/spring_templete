@@ -19,13 +19,9 @@ public class Reducing {
 		Integer x=  list1.stream().reduce((a,b)->a*b).get();
 		System.out.println("x = "+x);
 		Integer max = list1.stream().reduce(Integer::max).get();
-		System.out.println("max: "+max);
-		
-		
-		
+		System.out.println("max: "+max);	
 		
 	}
-	
 	
 	
 	public static void print(Stream stream){
