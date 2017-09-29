@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.data.jpa.domain.Specification;
 
 import com.chen.entity.FactEntity;
+import com.chen.qlexpress.spring.QLExpressContext;
 import com.chen.qlexpress.spring.QlExpressUtil;
 import com.chen.service.impl.ExpressionServiceImpl;
 import com.chen.test.BasicTest;
@@ -28,7 +29,7 @@ public class SprinQLTest extends BasicTest {
 
 		Map<String, Object> hMap = new HashMap<>();
 		QlExpressUtil qlExpressUtil = new QlExpressUtil(ctx);
-		Object result = qlExpressUtil.execute("during('2017-09-27','2017-09-28')", hMap);
+		Object result = qlExpressUtil.execute("during('2017-09-26','2017-09-28')", hMap);
 		Specification<FactEntity> sp1 = (Specification<FactEntity>) result;
 
 		Double sum = expressionServiceImpl.getSumScore(sp1);
@@ -54,9 +55,8 @@ public class SprinQLTest extends BasicTest {
 	@Test
 	public void testSpring() throws Exception {
 
-		Map<String, Object> hMap = new HashMap<>();
 		QlExpressUtil qlExpressUtil = new QlExpressUtil(ctx);
-		Object result = qlExpressUtil.execute("sum(during('2017-09-27','2017-09-28'))", hMap);
+		Object result = qlExpressUtil.coreExecute(new QLExpressContext(ctx),"sum(during('2017-09-26','2017-09-28'))");
 
 		Double sum = (Double) result;
 		System.err.println("  ----------------" + sum + "  -----------------------");
