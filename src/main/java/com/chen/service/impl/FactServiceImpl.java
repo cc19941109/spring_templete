@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.chen.entity.FactEntity;
-import com.chen.repository.FactRepository;
+import com.chen.qlexpress.data.FactRepository;
 import com.chen.service.FactService;
 
 @Service

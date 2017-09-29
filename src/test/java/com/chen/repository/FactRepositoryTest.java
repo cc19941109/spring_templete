@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.chen.entity.FactEntity;
+import com.chen.qlexpress.data.FactRepository;
 import com.chen.service.impl.FactServiceImpl;
 import com.chen.test.BasicTest;
 
