@@ -33,18 +33,26 @@ public class ExpressionServiceImpl implements ExpressionService {
 
 		return factEntities;
 	}
-	
-	
-	public Double getSumScore(Specification<FactEntity> specification) {
-		
-		List<FactEntity> list = factRepository.findAll(specification);
-		
-		return list.stream().map(FactEntity::getScore).reduce(0.0, Double::sum);
-		
+
+	public Double get(String expression) {
+
+		Object result = null;
+		ExpressRunner runner = ExpressionCreater.creat();
+		try {
+			result = runner.execute(expression, null, null, true, true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return (double) result;
+
 	}
 
+	public Double getSumScore(Specification<FactEntity> specification) {
 
+		List<FactEntity> list = factRepository.findAll(specification);
 
-	
-	
+		return list.stream().map(FactEntity::getScore).reduce(0.0, Double::sum);
+
+	}
+
 }

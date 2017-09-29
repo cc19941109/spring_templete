@@ -20,9 +20,9 @@ public class WithOperator<T> extends Operator {
 		Specification<T> s1 = (Specification<T>) list[0];
 		Specification<T> s2 = (Specification<T>) list[1];
 
-		Specifications<T> specifications = Specifications.where(s1).and(s2);
+		Specifications<T> specification = Specifications.where(s1).and(s2);
 
-		return specifications;
+		return specification;
 	}
 
 }

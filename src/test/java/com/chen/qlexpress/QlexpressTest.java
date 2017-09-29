@@ -55,7 +55,7 @@ public class QlexpressTest extends BasicTest {
 	@Test
 	public void testWith() {
 		// String expression = "during('2017-09-27','2017-09-28') with pcs([1,2]) ";
-		String expression = "  pcs([1,2]) with during('2017-09-27','2017-09-28') ";
+		String expression = "  pcs([1,2,3,4,5]) with during('2017-09-01','2017-09-28') ";
 
 		List<FactEntity> factEntities = expressionServiceImpl.findBy(expression);
 		System.err.println("---------" + factEntities.size() + "-----------");
