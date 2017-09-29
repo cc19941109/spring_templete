@@ -18,6 +18,9 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
+	<bean id = "qlExpressUtil" class="com.chen.qlexpress.spring.QlExpressUtil"></bean>
+	
 	<bean id="apple" class="com.chen.test.AppleBean">
 		<constructor-arg>
 			<value>redapple</value>

@@ -16,7 +16,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories("com.chen.repository")
+@EnableJpaRepositories("com.chen")
 // @EnableTransactionManagement
 public class JpaHirConfig {
 
