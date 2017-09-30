@@ -7,8 +7,9 @@ import org.springframework.stereotype.Component;
 
 import com.ql.util.express.IExpressContext;
 
-@SuppressWarnings("serial")
 public class QLExpressContext extends HashMap<String, Object> implements IExpressContext<String, Object> {
+
+	private static final long serialVersionUID = 1L;
 
 	private ApplicationContext context;
 
@@ -39,7 +40,7 @@ public class QLExpressContext extends HashMap<String, Object> implements IExpres
 	}
 
 	public Object put(String name, Object object) {
-	
+
 		return super.put(name, object);
 	}
 

@@ -47,7 +47,6 @@ public class SprinQLTest extends BasicTest {
 		
 		System.out.println("----------"+sumScore+"-------------");
 		
-		
 	}
 	
 	
