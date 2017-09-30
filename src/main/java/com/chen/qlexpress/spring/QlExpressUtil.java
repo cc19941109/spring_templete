@@ -23,7 +23,7 @@ import com.ql.util.express.IExpressContext;
 //import com.taobao.upp.sc.common.expression.QLExpressContext;
 
 @Component
-public class QlExpressUtil implements ApplicationContextAware,InitializingBean {
+public class QlExpressUtil implements ApplicationContextAware {
 
 	private static ExpressRunner runner;
 	static {
@@ -31,11 +31,11 @@ public class QlExpressUtil implements ApplicationContextAware,InitializingBean {
 	}
 	private static boolean isInitialRunner = false;
 
-	private  ApplicationContext applicationContext;// spring上下文
+	private ApplicationContext applicationContext;// spring上下文
 
 	public QlExpressUtil() {
 	}
-	
+
 	public QlExpressUtil(ApplicationContext applicationContext) {
 		super();
 		this.applicationContext = applicationContext;
@@ -51,42 +51,40 @@ public class QlExpressUtil implements ApplicationContextAware,InitializingBean {
 	 */
 	@SuppressWarnings("unchecked")
 	public Object execute(String statement, Map<String, Object> context) throws Exception {
-		
-		if(applicationContext==null) {
+
+		if (applicationContext == null) {
 			System.err.println("expressionServiceImpl get bean applicationContext is null");
-		}else {
+		} else {
 			try {
 				Object bean = applicationContext.getBean("expressionServiceImpl");
 				System.err.println("expressionServiceImpl get bean success....");
 			} catch (Exception e) {
 				System.err.println("expressionServiceImpl get bean failed ......................................");
 			}
-			
+
 		}
 		initRunner(runner);
 		IExpressContext expressContext = new QLExpressContext(context, applicationContext);
 		statement = initStatement(statement);
 		return runner.execute(statement, expressContext, null, true, false);
 	}
-	
-	
-	
-	public Object coreExecute(QLExpressContext expressContext ,String statement){
-		
-		if(applicationContext==null) {
+
+	public Object coreExecute(QLExpressContext expressContext, String statement) {
+
+		if (applicationContext == null) {
 			System.err.println(" applicationContext is null");
-		}else{
+		} else {
 			System.err.println(" applicationContext initialzed...");
 
-			
 		}
-		
+
 		initRunner(runner);
 		statement = initStatement(statement);
-		
-//		expressContext.setApplicationContext(applicationContext);
-		
+
+		// expressContext.setApplicationContext(applicationContext);
+
 		try {
+			testApplicationContext();
 			Object value = this.runner.execute(statement, expressContext, null, true, true);
 			return value;
 		} catch (Exception e) {
@@ -94,13 +92,10 @@ public class QlExpressUtil implements ApplicationContextAware,InitializingBean {
 			System.err.println("expression exception ....");
 		}
 		return null;
-		
-		
-	}
-	
-	
 
-	public Map<String, Object> pag(Map<String, Object> map) {
+	}
+
+	public void testApplicationContext() {
 		Object bean = null;
 		if (applicationContext == null) {
 			System.err.println("applicationContext 为 null..........");
@@ -108,14 +103,14 @@ public class QlExpressUtil implements ApplicationContextAware,InitializingBean {
 		}
 		// int num = applicationContext.getBeanDefinitionCount();
 		// System.out.println("bean definited num = "+num+" .......................");
+		
 		try {
 			bean = applicationContext.getBean("expressionServiceImpl");
 			System.err.println("expressionServiceImpl get success ......................................");
 		} catch (Exception e) {
 			System.err.println("expressionServiceImpl get failed ......................................");
 		}
-		map.put("expressionServiceImpl", bean);
-		return map;
+		
 	}
 
 	/**
@@ -165,9 +160,4 @@ public class QlExpressUtil implements ApplicationContextAware,InitializingBean {
 	public void setApplicationContext(ApplicationContext aContext) throws BeansException {
 		applicationContext = aContext;
 	}
-
-	public void afterPropertiesSet() throws Exception {
-		
-	}
-
 }

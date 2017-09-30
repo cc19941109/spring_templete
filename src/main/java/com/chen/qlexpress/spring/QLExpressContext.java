@@ -33,12 +33,14 @@ public class QLExpressContext extends HashMap<String, Object> implements IExpres
 		Object result = null;
 		result = super.get(name);
 		try {
+			String sname = (String) name;
+			System.err.println("try to get "+sname+" ......loading.....");
 			if (result == null && this.context != null && this.context.containsBean((String) name)) {
 				// 如果在Spring容器中包含bean，则返回String的Bean
 				result = this.context.getBean((String) name);
 			}
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException("表达式获取对象失败",e);
 		}
 		return result;
 	}
