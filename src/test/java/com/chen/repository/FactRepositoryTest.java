@@ -60,12 +60,12 @@ public class FactRepositoryTest extends BasicTest {
 		FactEntity entity1 = new FactEntity();
 
 		for (long i = 0; i < 100; i++) {
-			entity1.setId(i + 108);
+			entity1.setId(i +109);
 			entity1.setPid(getRan(10));
 			entity1.setCid(getRan(10));
 			
 			Date date = new Date();
-			date.setYear(116);
+			date.setYear(117);
 			date.setMonth(8);
 			date.setDate(getRan(30));
 			entity1.setDate(date);

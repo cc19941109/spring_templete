@@ -22,6 +22,10 @@ public class QLExpressContext extends HashMap<String, Object> implements IExpres
 		this.context = aContext;
 	}
 
+	public void setApplicationContext(ApplicationContext applicationContext){
+		this.context = applicationContext;
+	}
+
 	/**
 	 * 抽象方法：根据名称从属性列表中提取属性值
 	 */

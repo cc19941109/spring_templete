@@ -5,7 +5,9 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.chen.entity.FactEntity;
+import com.chen.qlexpress.ExpressionCreater;
 import com.chen.service.impl.ExpressionServiceImpl;
+import com.ql.util.express.ExpressRunner;
 
 @Service
 public class Func {
@@ -17,5 +19,6 @@ public class Func {
 
 		return expressionServiceImpl.getSumScore(specification);
 	}
+
 
 }

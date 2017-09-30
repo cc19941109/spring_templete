@@ -22,14 +22,16 @@ public class ExpressionCreater {
 					new Class[] { Integer[].class }, null);
 			runner.addFunctionOfClassMethod("during", TimeFunc.class.getName(), "during",
 					new Class[] { String.class, String.class }, null);
-			runner.addFunctionOfClassMethod("day", TimeFunc.class.getName(), "day",
-					new Class[] { String.class}, null);
+			runner.addFunctionOfClassMethod("day", TimeFunc.class.getName(), "day", new Class[] { String.class }, null);
 			runner.addFunctionOfClassMethod("category", CategoryFunc.class.getName(), "filterCategory",
 					new Class[] { Integer[].class }, null);
-			runner.addFunctionOfClassMethod("sum",ExpressionServiceImpl.class.getName(), "getSumScore", new Class[] {Specification.class}, null);
-			runner.addFunctionOfClassMethod("d", ExpressionServiceImpl.class.getName(), "d", new Class[] {String.class	}, null);
+			// runner.addFunctionOfClassMethod("sum", Func.class.getName(),
+			// "sum", new Class[] { Specification.class },null);
 
-			
+			runner.addFunctionOfClassMethod("sum", ExpressionServiceImpl.class.getName(), "getSumScore",
+					new Class[] { Specification.class }, null);
+			runner.addFunctionOfClassMethod("d", ExpressionServiceImpl.class.getName(), "d",
+					new Class[] { String.class }, null);
 			runner.addOperator("with", new WithOperator<FactEntity>("with"));
 			runner.addOperator("huo", new com.chen.qlexpress.operator.OrOperator<>("or"));
 

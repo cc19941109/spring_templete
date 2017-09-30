@@ -3,6 +3,7 @@ package com.chen.qlexpress.spring;
 import java.util.Map;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -22,7 +23,7 @@ import com.ql.util.express.IExpressContext;
 //import com.taobao.upp.sc.common.expression.QLExpressContext;
 
 @Component
-public class QlExpressUtil implements ApplicationContextAware {
+public class QlExpressUtil implements ApplicationContextAware,InitializingBean {
 
 	private static ExpressRunner runner;
 	static {
@@ -67,6 +68,37 @@ public class QlExpressUtil implements ApplicationContextAware {
 		statement = initStatement(statement);
 		return runner.execute(statement, expressContext, null, true, false);
 	}
+	
+	
+	
+	public Object coreExecute(QLExpressContext expressContext ,String statement){
+		
+		if(applicationContext==null) {
+			System.err.println(" applicationContext is null");
+		}else{
+			System.err.println(" applicationContext initialzed...");
+
+			
+		}
+		
+		initRunner(runner);
+		statement = initStatement(statement);
+		
+//		expressContext.setApplicationContext(applicationContext);
+		
+		try {
+			Object value = this.runner.execute(statement, expressContext, null, true, true);
+			return value;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("expression exception ....");
+		}
+		return null;
+		
+		
+	}
+	
+	
 
 	public Map<String, Object> pag(Map<String, Object> map) {
 		Object bean = null;
@@ -132,6 +164,10 @@ public class QlExpressUtil implements ApplicationContextAware {
 
 	public void setApplicationContext(ApplicationContext aContext) throws BeansException {
 		applicationContext = aContext;
+	}
+
+	public void afterPropertiesSet() throws Exception {
+		
 	}
 
 }
