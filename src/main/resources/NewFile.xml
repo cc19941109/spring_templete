@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<do-config>  
+    <do path="User/adduser" type="UserPackage.UserServlet">  
+        <forward name="Success">AddSuccess.jsp</forward>  
+    </do>  
+</do-config>  
