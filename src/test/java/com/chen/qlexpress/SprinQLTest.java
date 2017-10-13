@@ -46,8 +46,7 @@ public class SprinQLTest extends BasicTest {
 		Specification<FactEntity> specification = (Specification<FactEntity>) execute;
 		Double sumScore = expressionServiceImpl.getSumScore(specification);
 		
-		System.out.println("----------"+sumScore+"-------------");
-		
+		System.out.println("----------"+sumScore+"-------------");	
 	}
 	
 	

@@ -3,7 +3,6 @@ package com.chen.qlexpress.spring;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
 import com.ql.util.express.IExpressContext;
 
@@ -16,7 +15,9 @@ public class QLExpressContext extends HashMap<String, Object> implements IExpres
 	public QLExpressContext(ApplicationContext aContext) {
 		this.context = aContext;
 	}
-
+	public QLExpressContext() {
+	}
+	
 	public QLExpressContext(Map<String, Object> aProperties, ApplicationContext aContext) {
 		super(aProperties);
 		this.context = aContext;

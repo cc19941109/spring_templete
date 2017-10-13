@@ -21,18 +21,18 @@ import org.dom4j.io.SAXReader;
  */
 public class Test2 {
 
-	private static String filepath = "NewFile.xml";
+	private static String filepath = "formula.xml";
 	
 	public static void main(String[] args) {
 //		read();
-//		readStringXml();
-		readxml();
+		readStringXml();
+//		readxml();
 	}
 
 	public static void readxml() {  
         SAXReader reader = new SAXReader(); // User.hbm.xml表示你要解析的xml文档  
         InputStream in = Thread.currentThread().getContextClassLoader()  
-                .getResourceAsStream("NewFile.xml");  
+                .getResourceAsStream(filepath);  
         try {  
             Document doc = reader.read(in);  
             Element root = doc.getRootElement(); // 获取根节点  
@@ -79,7 +79,7 @@ public class Test2 {
             // SAXReader就是一个管道，用一个流的方式，把xml文件读出来  
             SAXReader reader = new SAXReader(); // User.hbm.xml表示你要解析的xml文档  
             InputStream in = Thread.currentThread().getContextClassLoader()  
-                    .getResourceAsStream("NewFile.xml");  
+                    .getResourceAsStream(filepath);  
             Document doc = reader.read(in);  
             Element rootElt = doc.getRootElement(); // 获取根节点  
             System.out.println("根节点：" + rootElt.getName()); // 拿到根节点的名称  
@@ -88,7 +88,7 @@ public class Test2 {
                 Node node = rootElt.node(i);  
                 if (node instanceof Element) {  
                     Element elementTemp = (Element) node;  
-                    System.out.println("二级节点do：" + node.getName()); // 拿到第一个二级节点的名称do  
+                    System.out.println("二级节点：" + node.getName()); // 拿到第一个二级节点的名称do  
                     // 取得二级节点do的type和path属性的值  
                     for (Iterator iter = elementTemp.attributeIterator(); iter  
                             .hasNext();) {  

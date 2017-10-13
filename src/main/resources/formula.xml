@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body>
+	<!-- 这里的行政等级id 还要建一个类 -->
+	<module id="1" administrateId="1" timeId="1">
+		<needs>
+			<!-- 实际上同类所的积分,人口算法依赖now_score,p_popu,所以这两个公式必须存在才行 -->
+			<name>T_score</name>
+			<name>T_popu</name>
+		</needs>
+		<formula>
+			<name>now_score</name>
+			<expression>A+B+C+D+E+F+G</expression>
+		</formula>
+
+		<formula>
+			<name>p_popu</name>
+			<expression>X1*R1+X2*R2+X3*R3+X4*R4+X5*R5+X6*R6</expression>
+		</formula>
+
+		<formula>
+			<name>case_index</name>
+			<expression>100- 100*(now_score/p_popu-T_score/T_popu)/(T_score/T_popu)
+			</expression>
+		</formula>
+		
+		<rules>
+			<rule>
+				<name>num</name>
+				<value>1</value>
+			</rule>
+		</rules>
+	</module>
+
+
+	<module id="1" administrateId="" timeId="">
+		<formula>
+			<name>p_score1</name>
+			<expression>A1+B1+C1+D1+E1+F1+G1+H1</expression>
+		</formula>
+		<formula>
+			<name>p_score2</name>
+			<expression>A2+B2+C2+D2+E2+F2+G2+H2</expression>
+		</formula>
+		<formula>
+			<name>p_score3</name>
+			<expression>A3+B3+C3+D3+E3+F3+G3+H3</expression>
+		</formula>
+	</module>
+
+
+</body>
