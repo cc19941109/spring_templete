@@ -19,7 +19,7 @@ public class FormulaDomain {
 	private String name;
 	// 别名
 	private String alias;
-
+ 
 	// 公式
 	private String expression;
 

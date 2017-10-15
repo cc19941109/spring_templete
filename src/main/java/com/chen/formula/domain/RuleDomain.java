@@ -1,11 +1,9 @@
 package com.chen.formula.domain;
 
-
 import java.util.Date;
 import java.util.List;
 
 import com.chen.formula.constant.TimeEnum;
-
 
 public class RuleDomain {
 
@@ -18,9 +16,8 @@ public class RuleDomain {
 
 	// 行政级别id
 	private long administrateId;
-	
+
 	// 时间统计口径
 	private TimeEnum timeLevel;
-
 
 }
